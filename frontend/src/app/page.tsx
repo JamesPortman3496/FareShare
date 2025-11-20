@@ -1,65 +1,64 @@
-import Image from "next/image";
-
-export default function Home() {
+export default function HomePage() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <section className="flex w-full flex-col gap-6 md:flex-row">
+      <div className="flex-1 space-y-4">
+        <h1 className="text-3xl font-semibold tracking-tight md:text-4xl">
+          Organise shared costs without the spreadsheet chaos.
+        </h1>
+        <p className="text-sm text-text-3 md:text-base">
+          FareShare helps you and your group keep track of who&apos;s paid for
+          what, split expenses fairly, and stay aligned on budgets — whether
+          it&apos;s trips, team events, or house shares.
+        </p>
+
+        <div className="flex flex-wrap gap-3">
+          <button className="rounded-lg bg-primary-1 px-4 py-2 text-sm font-medium text-background-1 hover:bg-primary-2">
+            Go to dashboard
+          </button>
+          <button className="rounded-lg border border-border px-4 py-2 text-sm text-text-2 hover:bg-background-3">
+            Create a demo group
+          </button>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+
+        <ul className="mt-4 space-y-2 text-sm text-text-3">
+          <li>• Create groups for trips, teams, or households.</li>
+          <li>• Log expenses and see who owes what at a glance.</li>
+          <li>• Keep a shared, transparent history of payments.</li>
+        </ul>
+      </div>
+
+      <aside className="mt-6 flex-1 rounded-xl border border-border bg-background-3 p-4 text-sm text-text-2 md:mt-0">
+        <div className="mb-3 text-xs font-semibold uppercase tracking-wide text-text-3">
+          Example group snapshot
         </div>
-      </main>
-    </div>
+        <div className="space-y-2">
+          <div className="flex justify-between">
+            <span>Barcelona Trip</span>
+            <span className="text-success">+ £120 settled</span>
+          </div>
+          <div className="flex justify-between text-xs text-text-3">
+            <span>4 members · 18 expenses</span>
+            <span>2 outstanding</span>
+          </div>
+
+          <hr className="my-2 border-border" />
+
+          <div className="space-y-1 text-xs">
+            <div className="flex justify-between">
+              <span>Alex → group</span>
+              <span>£40 (accommodation)</span>
+            </div>
+            <div className="flex justify-between">
+              <span>Sam → group</span>
+              <span>£25 (dinner)</span>
+            </div>
+            <div className="flex justify-between">
+              <span>You → Alex</span>
+              <span className="text-warning">£15 due</span>
+            </div>
+          </div>
+        </div>
+      </aside>
+    </section>
   );
 }

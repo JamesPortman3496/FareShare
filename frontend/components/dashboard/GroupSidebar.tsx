@@ -24,7 +24,7 @@ export default function GroupSidebar({ groups, activeGroup }: Props) {
             return (
               <Link
                 key={group.id}
-                href={`/dashboard/group/${group.id}`}
+                href={`/dashboard/group/${group.id}/overview`}
                 className={[
                   "flex w-full flex-col rounded-xl border px-3 py-3 text-left transition",
                   active

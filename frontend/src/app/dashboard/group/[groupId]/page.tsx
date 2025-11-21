@@ -1,6 +1,9 @@
-import PageContent from "../../pageContent";
+import { redirect } from "next/navigation";
 
-export default function GroupDashboardPage() {
-  // PageContent will read the active group from the client context; no hook use here
-  return <PageContent activeGroup={null} />;
+interface Props {
+  params: { groupId: string };
+}
+
+export default function GroupRedirectPage({ params }: Props) {
+  redirect(`/dashboard/group/${params.groupId}/overview`);
 }

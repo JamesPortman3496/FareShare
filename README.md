@@ -1,66 +1,56 @@
 # FareShare
 
-FareShare is a small monorepo that hosts the code for a shared‑expense tracking app. The goal of this project is to provide a clear, modern structure that’s easy for contributors to understand and quick for new developers to spin up.
+FareShare is a monorepo for a shared‑expense app. It currently ships a Next.js web frontend and a lightweight Express backend. The structure stays small but is ready to grow as auth, data, and richer APIs land.
 
 ## 📦 Repository Structure
 
 ```
 /
-├── frontend/     # Next.js app (client-facing web app)
-└── README.md     # Project overview and setup guide
+├── backend/      # Express server (health endpoint scaffold)
+├── frontend/     # Next.js App Router frontend
+└── README.md     # Project overview
 ```
 
-At the moment, the main focus of the repo is the **frontend**, but the structure is designed to grow into a full stack project as the backend and supporting services evolve.
+### Frontend highlights
+- App Router with a global shell in `components/AppShell.tsx`
+- Navigation header components under `components/NavBar/`
+- Dashboard experience under `src/app/dashboard` with group-specific routes at `/dashboard/group/[groupId]`
+- Shared UI (Aurora background, modals, etc.) lives in `components/`
+
+### Backend highlights
+- Simple Express server (`backend/src/index.ts`) with `/health`
+- Ready for future API expansion
 
 ## 🚀 Getting Started
 
-This guide helps you get the project running locally as quickly as possible.
-
-### 1. Clone the repo
-
+### Clone
 ```bash
 git clone https://github.com/your-username/FareShare.git
 cd FareShare
 ```
 
-### 2. Set up the frontend
-
+### Frontend (Next.js)
 ```bash
 cd frontend
 npm install
 npm run dev
+# visit http://localhost:3000
 ```
 
-Then open your browser at:
-
+### Backend (Express)
+```bash
+cd backend
+npm install
+npm run dev   # or npm start
+# health check: http://localhost:4000/health
 ```
-http://localhost:3000
-```
 
-The app will reload automatically as you make changes.
+Run frontend and backend in separate terminals.
 
-## 🧱 Technology Stack
-
-**Frontend**
-- Next.js  
-- React  
-- TypeScript  
-- Tailwind CSS (if added)
-
-**Monorepo tooling**
-- npm workspaces (optional future step)
-- Simple directory‑based structure
-
-This structure keeps things lightweight but leaves room for future expansion—API services, shared utilities, or a design system can be added without major restructuring.
+## 🧱 Tech Stack
+**Frontend:** Next.js, React, TypeScript, Tailwind (utility classes), next-themes  
+**Backend:** Node.js, Express  
+**Tooling:** npm, TypeScript
 
 ## 🗺️ Project Direction
-
-This project is being developed as a real‑world, portfolio‑ready application. Planned additions include:
-
-- Backend API (Node/Express or Next.js API routes)
-- Database integration  
-- Auth and user management  
-- Expense tracking logic  
-- Shared components library  
-
-As the project grows, the README will expand to cover each new area clearly.
+Planned: real data persistence, auth, expense and settlement logic, richer API surface, and a shared component library. Contributions that improve stability, DX, or UX are welcome.***

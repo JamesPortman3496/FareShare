@@ -8,6 +8,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      maxWidth: {
+        "8xl": "90rem",
+      },
       colors: {
         "background-1": "var(--background-1)",
         "background-2": "var(--background-2)",
@@ -18,6 +21,7 @@ module.exports = {
         "text-3": "var(--text-3)",
         "primary-1": "var(--primary-1)",
         "primary-2": "var(--primary-2)",
+        "primary-3": "var(--primary-3)",
         danger: "var(--danger)",
         warning: "var(--warning)",
         success: "var(--success)",

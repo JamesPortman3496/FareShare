@@ -15,6 +15,7 @@
   --color-text-3: var(--text-3);
   --color-primary-1: var(--primary-1);
   --color-primary-2: var(--primary-2);
+  --color-primary-3: var(--primary-3);
   --color-danger: var(--danger);
   --color-warning: var(--warning);
   --color-success: var(--success);
@@ -38,6 +39,7 @@
 
   --primary-1: #14b8a6;    /* teal-500 */
   --primary-2: #0369a1;    /* sky-700 */
+  --primary-3: #22d3ee;    /* cyan-400 */
 
   --danger: #ef4444;       /* red-500 */
   --warning: #f59e0b;      /* amber-500 */
@@ -61,6 +63,7 @@
 
   --primary-1: #06b6d4;    /* cyan-500 */
   --primary-2: #0284c7;    /* sky-600 */
+  --primary-3: #38bdf8;    /* sky-400 */
 
   --danger: #f87171;       /* red-400 */
   --warning: #fbbf24;      /* amber-400 */

@@ -6,7 +6,6 @@ import { usePathname } from "next/navigation";
 const links = [
   { href: "/", label: "Home" },
   { href: "/dashboard", label: "Dashboard" },
-  { href: "/groups", label: "Groups" },
 ];
 
 type Theme = "light" | "dark";
@@ -14,7 +13,7 @@ type Theme = "light" | "dark";
 interface MainNavProps {
 }
 
-export default function MainNav(_: MainNavProps) {
+export default function PageNavigation(_: MainNavProps) {
   const pathname = usePathname();
 
   return (

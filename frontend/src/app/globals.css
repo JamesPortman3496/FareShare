@@ -51,15 +51,15 @@
 }
 
 .dark {
-  --background-1: #020617; /* slate-950 */
-  --background-2: #020617; /* slate-950 (slightly elevated, still very dark) */
-  --background-3: #0f172a; /* slate-900 */
+  --background-1: #050608; /* near-black base */
+  --background-2: #0d0f14; /* dark charcoal surface */
+  --background-3: #161920; /* muted gray surface */
 
-  --border: #1e293b;       /* slate-800 */
+  --border: #262a33;       /* soft neutral border */
 
-  --text-1: #e5e7eb;       /* gray-200 / close to slate-200 */
-  --text-2: #9ca3af;       /* gray-400 */
-  --text-3: #6b7280;       /* gray-500 */
+  --text-1: #f3f4f6;       /* light gray for strong contrast */
+  --text-2: #cbd5e1;       /* muted gray */
+  --text-3: #94a3b8;       /* subdued gray */
 
   --primary-1: #06b6d4;    /* cyan-500 */
   --primary-2: #0284c7;    /* sky-600 */

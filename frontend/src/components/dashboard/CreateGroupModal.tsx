@@ -5,12 +5,15 @@ import { useMemo, useState } from "react";
 type Props = {
   open: boolean;
   onClose: () => void;
+  onCreateGroup: (input: { name: string; members: string[] }) => Promise<void> | void;
 };
 
-export default function CreateGroupModal({ open, onClose }: Props) {
+export default function CreateGroupModal({ open, onClose, onCreateGroup }: Props) {
   const [groupName, setGroupName] = useState("");
   const [memberInput, setMemberInput] = useState("");
   const [members, setMembers] = useState<string[]>([]);
+  const [error, setError] = useState<string | null>(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const inviteLink = useMemo(() => {
     const slug = groupName.trim().toLowerCase().replace(/\s+/g, "-") || "new-group";
@@ -26,6 +29,28 @@ export default function CreateGroupModal({ open, onClose }: Props) {
   };
 
   if (!open) return null;
+
+  const handleCreate = async () => {
+    const name = groupName.trim();
+    if (!name) {
+      setError("Group name is required");
+      return;
+    }
+
+    setError(null);
+    setIsSubmitting(true);
+    try {
+      await onCreateGroup({ name, members });
+      setGroupName("");
+      setMembers([]);
+      setMemberInput("");
+      onClose();
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Failed to create group");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 px-4 py-6">
@@ -106,6 +131,8 @@ export default function CreateGroupModal({ open, onClose }: Props) {
             </div>
           </div>
 
+          {error ? <div className="text-sm text-warning">{error}</div> : null}
+
           <div className="flex justify-end gap-2">
             <button
               onClick={onClose}
@@ -114,10 +141,11 @@ export default function CreateGroupModal({ open, onClose }: Props) {
               Cancel
             </button>
             <button
-              className="rounded-md bg-primary-1 px-4 py-2 text-sm font-semibold text-background-1 hover:bg-primary-2"
-              onClick={onClose}
+              className="rounded-md bg-primary-1 px-4 py-2 text-sm font-semibold text-background-1 hover:bg-primary-2 disabled:opacity-60"
+              onClick={handleCreate}
+              disabled={isSubmitting}
             >
-              Create group
+              {isSubmitting ? "Creating..." : "Create group"}
             </button>
           </div>
         </div>

@@ -8,6 +8,7 @@ const tabs = [
   { key: "expenses", label: "Expenses" },
   { key: "add-expense", label: "Add expense" },
   { key: "pay-up", label: "Pay up" },
+  { key: "settings", label: "Group settings" },
 ];
 
 export default function TabNav({ groupId }: { groupId: string }) {

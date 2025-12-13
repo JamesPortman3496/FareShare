@@ -3,7 +3,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { fetchExpensesForGroup } from "@/lib/api-client/expenses";
 import { Expense } from "@/types/expenses";
-import { useDashboardContext } from "@/app/dashboard/layout";
+import { useDashboardContext } from "@/components/pages/dashboard/DashboardContext";
 
 type MemberBalance = {
   email: string;

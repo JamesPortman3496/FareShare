@@ -22,6 +22,8 @@ module.exports = {
         warning: "var(--warning)",
         success: "var(--success)",
         info: "var(--info)",
+        "surface-contrast": "var(--surface-contrast)",
+        "text-contrast": "var(--text-contrast)",
         background: "var(--background)",
         foreground: "var(--foreground)"
       },      

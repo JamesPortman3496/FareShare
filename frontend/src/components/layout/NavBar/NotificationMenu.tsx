@@ -20,13 +20,14 @@ export default function NotificationMenu() {
       <button
         type="button"
         onClick={() => setOpen((s) => !s)}
-        className="flex items-center gap-2 rounded-md border border-border bg-background-2 px-3 py-1.5 text-sm font-medium text-text-1 hover:bg-background-3"
+        className="flex items-center gap-2 rounded-full p-2 text-text-1 hover:text-primary-1"
         aria-expanded={open}
         aria-haspopup="true"
+        aria-label="Notifications"
       >
         <span className="relative flex items-center">
-          <span className="mr-2 h-2 w-2 rounded-full bg-primary-1" aria-hidden="true" />
-          Notifications
+          <BellIcon className="h-6 w-6" />
+          <span className="absolute -right-1 -top-1 h-2.5 w-2.5 rounded-full bg-primary-1" aria-hidden="true" />
         </span>
       </button>
 
@@ -51,5 +52,23 @@ export default function NotificationMenu() {
         </div>
       )}
     </div>
+  );
+}
+
+function BellIcon({ className }: { className?: string }) {
+  return (
+    <svg
+      className={className}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.6"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      <path d="M15 19a3 3 0 1 1-6 0" />
+      <path d="M18 15V11a6 6 0 0 0-12 0v4l-1.6 2.4a1 1 0 0 0 .8 1.6h13.6a1 1 0 0 0 .8-1.6Z" />
+    </svg>
   );
 }

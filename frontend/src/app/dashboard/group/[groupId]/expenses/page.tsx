@@ -1,5 +1,5 @@
 import { use } from "react";
-import ExpensesList from "@/components/dashboard/ExpensesList";
+import ExpensesList from "@/components/pages/dashboard/ExpensesList";
 
 export default function ExpensesPage({ params }: { params: Promise<{ groupId: string }> }) {
   const { groupId } = use(params);

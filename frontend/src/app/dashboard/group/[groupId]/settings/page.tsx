@@ -3,7 +3,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
 import { deleteGroup, updateGroup } from "@/lib/api-client/groups";
-import { useDashboardContext } from "../../../layout";
+import { useDashboardContext } from "@/components/pages/dashboard/DashboardContext";
 
 type EditableMember = {
   email: string;

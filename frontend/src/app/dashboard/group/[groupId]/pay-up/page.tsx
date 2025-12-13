@@ -1,5 +1,5 @@
 import { use } from "react";
-import PayUpList from "@/components/dashboard/PayUpList";
+import PayUpList from "@/components/pages/dashboard/PayUpList";
 
 export default function PayUpPage({ params }: { params: Promise<{ groupId: string }> }) {
   const { groupId } = use(params);

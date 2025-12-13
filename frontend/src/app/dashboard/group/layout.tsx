@@ -2,8 +2,8 @@
 
 import { ReactNode } from "react";
 import { useParams } from "next/navigation";
-import TabNav from "@/components/dashboard/TabNav";
-import { useDashboardContext } from "../layout";
+import TabNav from "@/components/pages/dashboard/TabNav";
+import { useDashboardContext } from "@/components/pages/dashboard/DashboardContext";
 
 export default function GroupPageLayout({ children }: { children: ReactNode }) {
   const params = useParams();

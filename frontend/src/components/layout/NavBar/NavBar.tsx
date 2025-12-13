@@ -3,6 +3,7 @@
 import PageNavigation from "./PageNavigation";
 import ColorModeMenu from "./ColorModeMenu";
 import NotificationMenu from "./NotificationMenu";
+import SignInButton from "./SignInButton";
 
 export default function NavBar() {
   return (
@@ -20,6 +21,7 @@ export default function NavBar() {
         <div className="flex items-center gap-3">
           <PageNavigation />
           <NotificationMenu />
+          <SignInButton />
           <ColorModeMenu />
         </div>
       </div>

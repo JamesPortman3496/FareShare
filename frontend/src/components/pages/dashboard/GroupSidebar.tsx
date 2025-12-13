@@ -50,7 +50,16 @@ export default function GroupSidebar({ groups, activeGroup, isLoading, error, on
   return (
     <>
       <aside className="h-full w-full max-w-xs flex-shrink-0 overflow-hidden rounded-2xl bg-background-2/80 shadow-sm backdrop-blur md:w-72">
-        <div className="text-sm font-semibold text-text-1 px-4 pt-4">Groups</div>
+        <div className="flex items-center justify-between px-4 pt-4">
+          <div className="text-sm font-semibold text-text-1">Groups</div>
+          <button
+            onClick={() => setShowCreate(true)}
+            aria-label="Create group"
+            className="flex h-8 w-8 items-center justify-center rounded-full border border-primary-1/60 bg-primary-1/10 text-primary-1 transition hover:border-primary-1 hover:bg-primary-1/15"
+          >
+            +
+          </button>
+        </div>
         <div className="mt-3 flex h-[calc(100%-56px)] flex-col gap-3 overflow-hidden px-4 pb-4">
           <div className="space-y-2 overflow-y-auto pr-1">
             {isLoading && (
@@ -97,13 +106,6 @@ export default function GroupSidebar({ groups, activeGroup, isLoading, error, on
               );
             })}
           </div>
-
-          <button
-            onClick={() => setShowCreate(true)}
-            className="w-full rounded-xl border border-dashed border-primary-1/60 bg-primary-1/10 px-3 py-3 text-sm font-semibold text-primary-1 shadow-sm hover:border-primary-1 hover:bg-primary-1/15"
-          >
-            Create group
-          </button>
         </div>
       </aside>
 

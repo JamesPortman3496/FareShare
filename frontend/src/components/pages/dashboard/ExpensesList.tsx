@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import { useDashboardContext } from "@/app/dashboard/layout";
+import { useDashboardContext } from "@/components/pages/dashboard/DashboardContext";
 import { fetchExpensesForGroup } from "@/lib/api-client/expenses";
 import { Expense } from "@/types/expenses";
 

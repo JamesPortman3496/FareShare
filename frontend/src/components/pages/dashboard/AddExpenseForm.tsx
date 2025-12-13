@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import { useDashboardContext } from "@/app/dashboard/layout";
+import { useDashboardContext } from "@/components/pages/dashboard/DashboardContext";
 import { createExpense } from "@/lib/api-client/expenses";
 
 type CurrencyOption = {

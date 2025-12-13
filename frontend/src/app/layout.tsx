@@ -1,8 +1,16 @@
 import type { Metadata } from "next";
-import "./globals.css";
 import { ReactNode } from "react";
+import { Manrope } from "next/font/google";
+
 import AppShell from "@/components/layout/AppShell";
 import AppProviders from "@/components/providers/AppProviders";
+import "./globals.css";
+
+const manrope = Manrope({
+  subsets: ["latin"],
+  variable: "--font-sans-family",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   title: "FareShare",
@@ -12,9 +20,11 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className="min-h-screen antialiased">
+      <body className={`${manrope.variable} min-h-screen antialiased`}>
         <AppProviders>
-          <AppShell>{children}</AppShell>
+          <AppShell>
+            {children}
+          </AppShell>
         </AppProviders>
       </body>
     </html>

@@ -17,7 +17,7 @@ function DashboardShell({ children }: { children: ReactNode }) {
 
   return (
     <section className="relative w-full space-y-4">
-      <div className="h-[calc(100vh-140px)] min-h-[700px] overflow-hidden rounded-3xl bg-background-1/80 shadow-sm">
+      <div className="h-[calc(100vh-140px)] min-h-[700px] overflow-hidden ">
         <div className="flex h-full min-h-0 flex-col gap-4 p-4 md:flex-row md:gap-6 md:p-6">
           <GroupSidebar
             groups={groups}

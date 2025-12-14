@@ -1,10 +1,12 @@
 "use client";
 
+import { useSession } from "next-auth/react";
 import { useEffect, useRef, useState } from "react";
 
 export default function NotificationMenu() {
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement | null>(null);
+  const { status } = useSession();
 
   useEffect(() => {
     function onDoc(e: MouseEvent) {
@@ -14,6 +16,8 @@ export default function NotificationMenu() {
     document.addEventListener("click", onDoc);
     return () => document.removeEventListener("click", onDoc);
   }, []);
+
+  if (status !== "authenticated") return null;
 
   return (
     <div className="relative" ref={ref}>

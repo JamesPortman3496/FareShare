@@ -10,4 +10,5 @@ export { ModeSwitcher } from "./ModeSwitcher";
 export { NeutralPanel } from "./NeutralPanel";
 export { SignInExtras } from "./SignInExtras";
 export { SubmitButton } from "./SubmitButton";
+export { ToggleVisibility } from "./ToggleVisibility";
 export type { AuthMode } from "./types";

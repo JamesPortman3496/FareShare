@@ -21,7 +21,7 @@ export function ModeSwitcher({ isSignIn, onToggle }: { isSignIn: boolean; onTogg
             {isSignIn ? "New here?" : "Welcome back"}
           </p>
           <h3 className="text-3xl font-semibold tracking-tight">
-            {isSignIn ? "Join the crew" : "Glad to see you"}
+            {isSignIn ? "Get started" : "Glad to see you"}
           </h3>
           <p className="max-w-md text-sm text-text-contrast/80">
             {isSignIn

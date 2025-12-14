@@ -33,10 +33,10 @@
   --font-mono-family: ui-monospace, "SFMono-Regular", "SFMono-Regular", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 
   --background-1: #e2e8f0; /* slate-200 */
-  --background-2: #f8fafc; /* slate-50 */
-  --background-3: #f1f5f9; /* slate-100 */
+  --background-2: #cbd5e1; /* slate-300 */
+  --background-3: #94a3b8; /* slate-400 */
 
-  --border: #e4e4e7;       /* zinc-200 */
+  --border: #9ca3af;       /* gray-400 for stronger contrast in light mode */
 
   --text-1: #0f172a;       /* slate-900 */
   --text-2: #475569;       /* slate-600 */

@@ -16,7 +16,7 @@ type Section = {
     payer: string;
     amountLabel: string;
     amountValue: number;
-    isLent: boolean;
+    role: "lent" | "borrowed" | "info";
     owes: { email: string; displayName?: string; amount: number; currency: string; isCurrentUser: boolean }[];
     total: string;
     payerName: string;
@@ -127,8 +127,25 @@ export default function ExpensesList({ groupId }: { groupId: string }) {
       }
       const userShare = exp.owes.find((o) => o.email === CURRENT_USER_EMAIL)?.amount;
       const isPayer = exp.paidBy.email === CURRENT_USER_EMAIL;
+      const isParticipant = isPayer || userShare !== undefined;
       const amountLent = isPayer ? Math.max(exp.amount - (userShare ?? 0), 0) : 0;
-      const amountBorrowed = !isPayer ? userShare ?? exp.amount / Math.max(exp.owes.length, 1) : 0;
+      const amountBorrowed = !isPayer && userShare !== undefined ? userShare : 0;
+
+      let amountLabel: string;
+      let role: "lent" | "borrowed" | "info";
+      if (isPayer && amountLent > 0) {
+        role = "lent";
+        amountLabel = `you lent ${formatCurrency(amountLent, exp.currency)}`;
+      } else if (!isPayer && amountBorrowed > 0) {
+        role = "borrowed";
+        amountLabel = `you borrowed ${formatCurrency(amountBorrowed, exp.currency)}`;
+      } else if (isParticipant) {
+        role = "info";
+        amountLabel = "no balance change for you";
+      } else {
+        role = "info";
+        amountLabel = "not in this split";
+      }
 
       const owes = exp.owes.map((o) => ({
         ...o,
@@ -143,14 +160,9 @@ export default function ExpensesList({ groupId }: { groupId: string }) {
         dateValue: exp.date,
         description: exp.description,
         payer: `${exp.paidBy.name ?? displayNameByEmail[exp.paidBy.email] ?? exp.paidBy.email} paid ${formatCurrency(exp.amount, exp.currency)}`,
-        amountLabel:
-          (isPayer && amountLent > 0)
-            ? `you lent ${formatCurrency(amountLent, exp.currency)}`
-            : (!isPayer && amountBorrowed > 0)
-              ? `you borrowed ${formatCurrency(amountBorrowed, exp.currency)}`
-              : `split ${formatCurrency(exp.amount, exp.currency)}`,
+        amountLabel,
         amountValue: isPayer ? amountLent : amountBorrowed,
-        isLent: isPayer,
+        role,
         owes,
         total: formatCurrency(exp.amount, exp.currency),
         payerName: displayNameByEmail[exp.paidBy.email] ?? exp.paidBy.name ?? exp.paidBy.email,
@@ -252,13 +264,15 @@ export default function ExpensesList({ groupId }: { groupId: string }) {
                       <div
                         className={[
                           "flex items-center justify-center rounded-lg border px-3 py-2 text-xs font-semibold",
-                            entry.isLent
-                              ? "border-success/50 bg-success/10 text-success"
-                              : "border-warning/40 bg-warning/10 text-warning",
-                          ].join(" ")}
-                        >
-                          {highlightMatch(entry.amountLabel, searchQuery)}
-                        </div>
+                          entry.role === "lent"
+                            ? "border-success/50 bg-success/10 text-success"
+                            : entry.role === "borrowed"
+                              ? "border-warning/40 bg-warning/10 text-warning"
+                              : "border-border bg-background-1/80 text-text-2",
+                        ].join(" ")}
+                      >
+                        {highlightMatch(entry.amountLabel, searchQuery)}
+                      </div>
                       </button>
 
                       {isExpanded && (

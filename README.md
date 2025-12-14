@@ -1,21 +1,23 @@
 # FareShare
 
-FareShare is a monorepo for a shared‑expense app. It currently ships a Next.js web frontend and a lightweight Express backend. The structure stays small but is ready to grow as auth, data, and richer APIs land.
+FareShare is a shared-expense app. The monorepo contains a Next.js App Router frontend and a lightweight Express backend. The current build includes mock groups/expenses, animated UI, and a placeholder credentials-based auth flow (NextAuth) with a demo user.
 
 ## 📦 Repository Structure
 
 ```
 /
 ├── backend/      # Express server (health endpoint scaffold)
-├── frontend/     # Next.js App Router frontend
+├── frontend/     # Next.js App Router frontend (NextAuth + mock data)
 └── README.md     # Project overview
 ```
 
 ### Frontend highlights
-- App Router with a global shell in `components/AppShell.tsx`
-- Navigation header components under `components/NavBar/`
-- Dashboard experience under `src/app/dashboard` with group-specific routes at `/dashboard/group/[groupId]`
-- Shared UI (Aurora background, modals, etc.) lives in `components/`
+- App Router with a global shell in `src/components/layout/AppShell.tsx`
+- NextAuth wiring (credentials) with a demo account; session-aware nav and account dropdown
+- Sign-in/up UI with password visibility toggles and demo credentials support
+- Dashboard experience at `/dashboard` with group routes `/dashboard/group/[groupId]` backed by mock expenses (holiday trip, house share, weekend away)
+- Account settings page (`/account`) with prefilled profile fields from the signed-in session
+- Shared UI (Aurora background, modals, etc.) in `src/components`
 
 ### Backend highlights
 - Simple Express server (`backend/src/index.ts`) with `/health`
@@ -37,6 +39,11 @@ npm run dev
 # visit http://localhost:3000
 ```
 
+#### Auth notes
+- Default credentials (demo): `demo@fareshare.app` / `password123` (configurable via `DEMO_USER_EMAIL` / `DEMO_USER_PASSWORD`).
+- Set `NEXTAUTH_SECRET` in `frontend/.env.local` (use `openssl rand -base64 32` to generate).
+- Current Credentials provider is placeholder-only; replace `authorize` with real backend calls when available.
+
 ### Backend (Express)
 ```bash
 cd backend
@@ -48,9 +55,9 @@ npm run dev   # or npm start
 Run frontend and backend in separate terminals.
 
 ## 🧱 Tech Stack
-**Frontend:** Next.js, React, TypeScript, Tailwind (utility classes), next-themes  
+**Frontend:** Next.js (App Router), React, TypeScript, Tailwind-style utility classes, next-themes, NextAuth  
 **Backend:** Node.js, Express  
 **Tooling:** npm, TypeScript
 
 ## 🗺️ Project Direction
-Planned: real data persistence, auth, expense and settlement logic, richer API surface, and a shared component library. Contributions that improve stability, DX, or UX are welcome.***
+Planned: real data persistence, production-ready auth, expense and settlement logic, richer API surface, and shared component library. Contributions that improve stability, DX, or UX are welcome.
